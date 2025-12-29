@@ -32,17 +32,22 @@ class WeatherService {
 
   // get the weather from the current location
   Future<Weather> getWeatherFromLocation() async {
-    final location = GetLocationService();
-    final cityName = await location.getCityNameFromCurrentLocation();
+    try {
+      final location = GetLocationService();
+      final cityName = await location.getCityNameFromCurrentLocation();
 
-    final url = '$BASE_URL?q=$cityName&appid=$apiKey&units=metric';
+      final url = '$BASE_URL?q=$cityName&appid=$apiKey&units=metric';
 
-    final Response = await http.get(Uri.parse(url));
+      final Response = await http.get(Uri.parse(url));
 
-    if (Response.statusCode == 200) {
-      final json = jsonDecode(Response.body);
-      return Weather.fromJson(json);
-    } else {
+      if (Response.statusCode == 200) {
+        final json = jsonDecode(Response.body);
+        return Weather.fromJson(json);
+      } else {
+        throw Exception("Faild to load the weather data");
+      }
+    } catch (e) {
+      print(e.toString());
       throw Exception("Faild to load the weather data");
     }
   }
