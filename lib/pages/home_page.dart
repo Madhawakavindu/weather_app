@@ -62,12 +62,21 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
-                  child: const Text(
-                    "Search Weather",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.orangeAccent,
-                      fontWeight: FontWeight.bold,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(107, 255, 208, 128),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Search Weather",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.orangeAccent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ),
